@@ -1,25 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import ReactDOM from 'react-dom';
 
-function App() {
+function App(user) {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div id="root">{user.firstName + ' ' + user.lastName}</div>
     </div>
   );
 }
+
+const user = {
+  firstName: 'Harper',
+  lastName: 'Perez',
+};
+
+const element = <h1>Hello, {App(user)}!</h1>;
+
+ReactDOM.render(element, document.getElementById('root'));
 
 export default App;
