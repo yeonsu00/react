@@ -42,12 +42,20 @@ import ReactDOM from 'react-dom';
 
 // setInterval(tick, 1000);
 
-function App(props) {
+function Welcome(props) {
   return <h1>Hello, {props.name}</h1>
 }
 
-const element = <App name="Yeonsu" />;
+function App() {
+  return (
+    <div>
+      <Welcome name="Yeonsu" />
+      <Welcome name="Sara" />
+    </div>
+  );
+}
+//const element = <Welcome name="Yeonsu" />;
 
-ReactDOM.render(element, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
 // export default App;
