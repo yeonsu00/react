@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import ReactDOM from 'react-dom';
+import React from 'react';
 
 // const user = {
 //   firstName: 'Harper',
@@ -62,42 +63,73 @@ import ReactDOM from 'react-dom';
 
 
 /*컴포넌트 추출*/
-function Component(props) {
-  return (
-    <Comment user={props.author}/>
+// function Component(props) {
+//   return (
+//     <Comment user={props.author}/>
+//   );
+// }
+
+// function Avatar(props) {
+//   return (
+//     <img className="Avatar"
+//       src={props.user.avatarUrl}
+//       alt={props.user.name}
+//     />
+//   );
+// }
+
+// function UserInfo(props) {
+//   return (
+//     <div className="UserInfo">
+//       <Avatar user={props.author}/>
+//       <div className="UserInfo-name">
+//         {props.author.name}
+//       </div>
+//     </div>
+//   );
+// }
+
+// function Comment(props) {
+//   return (
+//     <div className="Comment">
+//       <UserInfo user={props.author}/>
+//       <div className="Comment-text"> 
+//         {props.text}
+//       </div>
+//       <div className="Comment-date">
+//         {formatDate(props.date)}
+//       </div>
+//     </div>
+//   );
+// }
+
+
+/*state와 생명주기*/
+// function Clock(props) {
+//   return (
+//     <div>
+//       <h1>Hello, world!</h1>
+//       <h2>It is {props.date.toLocaleTimeString()}.</h2>
+//     </div>
+//   );
+// }
+
+class Clock extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+
+function tick() {
+  ReactDOM.render(
+    <Clock date={new Date()}/>,
+    document.getElementById('root')
   );
 }
 
-function Avatar(props) {
-  return (
-    <img className="Avatar"
-      src={props.user.avatarUrl}
-      alt={props.user.name}
-    />
-  );
-}
-
-function UserInfo(props) {
-  return (
-    <div className="UserInfo">
-      <Avatar user={props.author}/>
-      <div className="UserInfo-name">
-        {props.author.name}
-      </div>
-    </div>
-  );
-}
-
-function Comment(props) {
-  return (
-    <div className="Comment">
-      <UserInfo user={props.author}/>
-      <div className="Comment-text"> 
-        {props.text}
-      </div>
-      <div className="Comment-date">
-        {formatDate(props.date)}
-      </div>
-    </div>
-  );
-}
+setInterval(tick, 1000);
