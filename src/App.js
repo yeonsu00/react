@@ -114,27 +114,61 @@ import React from 'react';
 //   );
 // }
 
-class Clock extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {date: new Date()};
-  }
+// class Clock extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {date: new Date()};
+//   }
   
-  render() {
-    return (
-      <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
-      </div>
-    );
-  }
-}
+//   componentDidMount() {
+//     this.timerId = setInterval(
+//       () => this.tick(), 1000
+//     );
+//   }
 
-function tick() {
-  ReactDOM.render(
-    <Clock />,
-    document.getElementById('root')
+//   componentWillUnmount() {
+//     clearInterval(this.timerId);
+//   }
+
+//   tick() {
+//     this.setState({
+//       date: new Date()
+//     });
+//   }
+//   render() {
+//     return (
+//       <div>
+//         <h1>Hello, world!</h1>
+//         <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+//       </div>
+//     );
+//   }
+// }
+
+// ReactDOM.render(
+//   <Clock />,
+//   document.getElementById('root')
+// );
+
+
+/*이벤트 처리하기*/
+function Form() {
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log('You clicked submit');
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+    <button type="submit">
+      Submit
+    </button>
+    </form>
   );
 }
 
-setInterval(tick, 1000);
+ReactDOM.render(
+  <Form />,
+  document.getElementById('root')
+);
+
