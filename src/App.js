@@ -226,20 +226,43 @@ import React from 'react';
 // );
 
 /*이벤트처리하기 Click me*/
-class LoggingButton extends React.Component {
-  handleClick() {
-    console.log('this is:', this);
+// class LoggingButton extends React.Component {
+//   handleClick() {
+//     console.log('this is:', this);
+//   }
+//   render() {
+//     return (
+//         <button onClick={() => this.handleClick()}>
+//           Click me
+//         </button>
+//     )
+//   }
+// }
+
+// ReactDOM.render(
+//   <LoggingButton />,
+//   document.getElementById('root')
+// );
+
+/*조건부 렌더링*/
+function UserGreeting(props) {
+  return <h1>Welcome back!</h1>;
+}
+
+function GuestGreeting(props) {
+  return <h1>Please sign up.</h1>;
+}
+
+function Greeting(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if(isLoggedIn) {
+    return <UserGreeting />;
   }
-  render() {
-    return (
-        <button onClick={() => this.handleClick()}>
-          Click me
-        </button>
-    )
-  }
+  return <GuestGreeting />;
 }
 
 ReactDOM.render(
-  <LoggingButton />,
-  document.getElementById('root')
+  <Greeting isLoggedIn={false} />,//isLoggedIn prop에 따라서 다른 인사말을 렌더링
+  document.getElementById('root') 
 );
+
