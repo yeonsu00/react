@@ -339,42 +339,75 @@ import React from 'react';
 //   document.getElementById('root')
 // );
 
-function WarningBanner(props) {
-  if (!props.warn) {
-    return null;
-  }
+// function WarningBanner(props) {
+//   if (!props.warn) {
+//     return null;
+//   }
 
+//   return (
+//     <div className="warning">
+//       Warning!
+//     </div>
+//   );
+// }
+
+// class Page extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {showWarning: true};
+//     this.handleToggleClick = this.handleToggleClick.bind(this);
+//   }
+
+//   handleToggleClick() {
+//     this.setState(state => ({showWarning: !state.showWarning}));
+//   }
+
+//   render() {
+//     return (
+//       <div>
+//         <WarningBanner warn= {this.state.showWarning} />
+//         <button onClick={this.handleToggleClick}>
+//           {this.state.showWarning ? 'Hide' : 'Show'}
+//         </button>
+//       </div>
+//     );
+//   }
+// }
+
+// ReactDOM.render(
+//   <Page />,
+//   document.getElementById('root')
+// );
+
+
+
+/*리스트와 Key*/
+// const numbers = [1, 2, 3, 4, 5];
+// const doubled = numbers.map((number) => number * 2);
+// console.log(doubled);
+
+// const listItems = numbers.map((number) => <li>{number}</li>);
+
+// ReactDOM.render(
+//   <ul>{listItems}</ul>,
+//   document.getElementById('root')
+// );
+
+function NumberList(props) {
+  const numbers = props.numbers;
+  const listItems = numbers.map((number) => 
+  <li key={number.toString()}>
+    {number}
+  </li>);
+  
   return (
-    <div className="warning">
-      Warning!
-    </div>
+    <ul>{listItems}</ul>
   );
 }
 
-class Page extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {showWarning: true};
-    this.handleToggleClick = this.handleToggleClick.bind(this);
-  }
-
-  handleToggleClick() {
-    this.setState(state => ({showWarning: !state.showWarning}));
-  }
-
-  render() {
-    return (
-      <div>
-        <WarningBanner warn= {this.state.showWarning} />
-        <button onClick={this.handleToggleClick}>
-          {this.state.showWarning ? 'Hide' : 'Show'}
-        </button>
-      </div>
-    );
-  }
-}
+const numbers = [1, 2, 3, 4, 5];
 
 ReactDOM.render(
-  <Page />,
+  <NumberList numbers={numbers} />,
   document.getElementById('root')
 );
