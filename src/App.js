@@ -245,21 +245,21 @@ import React from 'react';
 // );
 
 /*조건부 렌더링*/
-function UserGreeting(props) {
-  return <h1>Welcome back!</h1>;
-}
+// function UserGreeting(props) {
+//   return <h1>Welcome back!</h1>;
+// }
 
-function GuestGreeting(props) {
-  return <h1>Please sign up.</h1>;
-}
+// function GuestGreeting(props) {
+//   return <h1>Please sign up.</h1>;
+// }
 
-function Greeting(props) {
-  const isLoggedIn = props.isLoggedIn;
-  if(isLoggedIn) {
-    return <UserGreeting />;
-  }
-  return <GuestGreeting />;
-}
+// function Greeting(props) {
+//   const isLoggedIn = props.isLoggedIn;
+//   if(isLoggedIn) {
+//     return <UserGreeting />;
+//   }
+//   return <GuestGreeting />;
+// }
 
 // ReactDOM.render(
 //   <Greeting isLoggedIn={false} />,//isLoggedIn prop에 따라서 다른 인사말을 렌더링
@@ -320,20 +320,61 @@ function Greeting(props) {
 //   document.getElementById('root')
 // );
 
-function Mailbox(props) {
-  const unreadMessages = props.unreadMessages;
+
+// function Mailbox(props) {
+//   const unreadMessages = props.unreadMessages;
+//   return (
+//     <div>
+//       <h1>Hello!</h1>
+//       {unreadMessages.length > 0 && 
+//       <h2>You have {unreadMessages.length} unread messages.</h2>}
+//     </div>
+//   );
+// }
+
+// const messages = ['React', 'Re: React', 'Re:Re: React'];
+
+// ReactDOM.render (
+//   <Mailbox unreadMessages={messages} />,
+//   document.getElementById('root')
+// );
+
+function WarningBanner(props) {
+  if (!props.warn) {
+    return null;
+  }
+
   return (
-    <div>
-      <h1>Hello!</h1>
-      {unreadMessages.length > 0 && 
-      <h2>You have {unreadMessages.length} unread messages.</h2>}
+    <div className="warning">
+      Warning!
     </div>
   );
 }
 
-const messages = ['React', 'Re: React', 'Re:Re: React'];
+class Page extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {showWarning: true};
+    this.handleToggleClick = this.handleToggleClick.bind(this);
+  }
 
-ReactDOM.render (
-  <Mailbox unreadMessages={messages} />,
+  handleToggleClick() {
+    this.setState(state => ({showWarning: !state.showWarning}));
+  }
+
+  render() {
+    return (
+      <div>
+        <WarningBanner warn= {this.state.showWarning} />
+        <button onClick={this.handleToggleClick}>
+          {this.state.showWarning ? 'Hide' : 'Show'}
+        </button>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Page />,
   document.getElementById('root')
 );
